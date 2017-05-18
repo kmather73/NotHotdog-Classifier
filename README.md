@@ -167,6 +167,5 @@ Coming soon...
 
 # Step N: Profit
 Now that we are done we can sell it to Periscope and become very rich
-[![IMAGE ALT TEXT](http://img.youtube.com/vi/AJsOA4Zl6Io/0.jpg)](https://youtu.be/...
-AJsOA4Zl6Io)
+[![IMAGE ALT TEXT](http://img.youtube.com/vi/AJsOA4Zl6Io/0.jpg)](https://youtu.be/AJsOA4Zl6Io)
 [CLICK ME](https://www.youtube.com/watch?v=AJsOA4Zl6Io)
