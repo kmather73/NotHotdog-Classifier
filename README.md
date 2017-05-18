@@ -22,18 +22,18 @@ Here is a demonstration of the final version of the product that we are going to
 
 
 # Step 1: Collecting data
-The very first step in making a classifier is to collect data. Thus we need to find images of hotdogs and not-hotdogs. The best way do this is if you a professor at Stanford and you give each of your student an assignment to collect images of food for you, but be warned that they might try and steal your Idea.
+The very first step in making a classifier is to collect data. Thus we need to find images of hotdogs and not-hotdogs. The best way do this is if you are a professor at Stanford and you give each of your student an assignment to collect images of food for you, but be warned that they might try and steal the idea from you.
 
 [![IMAGE ALT TEXT](http://img.youtube.com/vi/T0FA_69nXjM/0.jpg)](https://youtu.be/T0FA_69nXjM)
 [CLICK ME](https://www.youtube.com/watch?v=T0FA_69nXjM)
 
 
-So if you're not a professor at Stanford you will need to collect the data yourself :(   Since Im not a processor at Stanford I had to collect the images myself. To do this I just used [ImageNet](http://www.image-net.org/) to search for my images, since ImageNet is like a database for images. To find the hotdog images I searched for “hotdog”, “chili dog” and “frankfurter” this give me about 1857 images.  For the not-hotdog images I searched for “food”, “furniture”, “people” and “pets” this give about 4024 not-hotdog images.
+So if you're not a professor at Stanford you will need to collect the data yourself :(   Since I'm not a processor at Stanford I had to collect the images myself. To do this I just used [ImageNet](http://www.image-net.org/) to search for my images, since ImageNet is like a database of images. To find the hotdog images I just searched for “hotdog”, “chili dog” and “frankfurter” after downloading all of the images it would me about 1857 hotdog images.  For the not-hotdog images I searched for “food”, “furniture”, “people” and “pets” this give me about 4024 not-hotdog images.
 
-Now theses are the images that I want to download I just need to click on the tab download tab click on link
+Now to actually download these images I need to get the URLs, to do that I just need to click on the tab download tab click on link called URLs
 ![ImageNet1]
 
-then copy the url to get the urls for all of the images
+then copy the URL of the page your on which will use in a script that well wirte to download all of thses images.
 ![ImageNet2]
 
 Next we need to write our scripts to download and save all of these images, here is my [python code](https://github.com/kmather73/NotHotdog-Classifier/blob/master/getData.py) for saving the images 
@@ -64,6 +64,7 @@ def store_raw_images(folders, links):
 ```
 
 Next I have my main method to drive the code 
+
 ```
 def main():
     links = [ 
@@ -84,7 +85,7 @@ def main():
 Now just wait for it to download all of thoses hotdogs!!!
 
 # Step 2: Cleaning the data
-At this point we have collected our data now we just need to clean it up a bit. If you take a look at the data you will probably notice that there are some garbage images that we need to remove, like images that look like one of the following
+At this point we have collected our data now we just need to clean it up a bit. If you take a look at the data you will probably notice that there are some garbage images that we need to remove, images that look like one of the following
 
 ![ToRemove1]
 ![ToRemove2]
@@ -111,9 +112,9 @@ def removeInvalid(dirPaths):
 Then just check the folder 'food' to and remove any images that might look like a hotdog. Next I made two folders called "hotdog" and "not-hotdog" and placed the 'frankfurter', 'chili-dog', 'hotdog' folders in the "not-hotdog" and the 'frankfurter', 'chili-dog', 'hotdog' folders in the 'hotdog' folder.
 
 # Step 3: Preprocessing and Data Augmentation
-Before we can feed out data to train our neural net we first need to do some data normalization and some data augmentation. It turns out that we don't have an equal number of hotdog and not hotdog images which is a problem when training a classifier. To fix this problem we can do some data augment by sampling images from each of the class and applying a random rotation and blur to the image to get more data.
+Before we can feed our data to train our neural net we first need to do some data normalization and some data augmentation. It turns out that we don't have an equal number of hotdog and not hotdog images which is a problem when training a classifier. To fix this problem we can do some data augment by sampling images from each of the class and applying a random rotation and blur to the image to get more data.
 
-This method can be used to greatly increase the amount of data we have since neural nets need a “large” amount of data to get good results. I used this method to get 10000 images from each class
+This method can be used to greatly increase the amount of data we have since neural nets need a “large” amount of data to get good results. I used this method to get 15000 images from each class
 ```
 def rotateImage(img, angle):
     (rows, cols, ch) = img.shape
@@ -167,6 +168,11 @@ To normalize our images we convert them to gray scale and then preform [histogra
 # Step 4: Building our Neural Net
 Coming soon...
 
+# Step 5: Training our Neural Net
+Coming soon...
+
+# Step 6: The Results
+Coming soon... with 98% accuracy
 # Step N: Profit
 Now that we are done we can sell it to Periscope and become very rich
 [![IMAGE ALT TEXT](http://img.youtube.com/vi/AJsOA4Zl6Io/0.jpg)](https://youtu.be/AJsOA4Zl6Io)
