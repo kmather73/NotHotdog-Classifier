@@ -165,11 +165,12 @@ def loadData(img_size, classSize):
  ```   
 To normalize our images we convert them to gray scale and then preform [histogram equalization](https://en.wikipedia.org/wiki/Histogram_equalization) 
 
-# Step 4: Building our Neural Net
+# Step 4: Building The Neural Net
 My model is a convolutional neural networks with three convolutional layers followed by two fully connected layers. Its based on the CNN from the steering angle model for building self-driving cars built by [comma.ai](https://github.com/commaai/research/blob/master/train_steering_model.py). Because if its good enough to drive a car it's good enough to detect a hotdog. 
 
 
-The model includes ELU layers and dropout to introduce nonlinearity.
+The model includes ELU layers and dropout to introduce nonlinearity:
+
 | Layer         		|     Description	        					| 
 |:---------------------:|:---------------------------------------------:| 
 | Input         		| 128x128x1 Gray scale image  					| 
@@ -212,7 +213,7 @@ def karasModel(inputShape):
     return model
 ```
 
-# Step 5: Training our Neural Net
+# Step 5: Training The Neural Net
 Coming soon...
 
 # Step 6: The Results
