@@ -10,7 +10,9 @@
 
 
 # NotHotdog-Classifier
-What would you say if I told you there is a app on the market that tell you if you have a hotdog or not a hotdog. It is very good and I do not want to work on it any more. You can hire someone else.
+Do you watch HBO's silicon valley? Because I do and I was inspired by Mr. Jian-Yang to make my own not hotdog classifier
+
+"What would you say if I told you there is a app on the market that tell you if you have a hotdog or not a hotdog. It is very good and I do not want to work on it any more. You can hire someone else." - Jian-Yang , 2017
 
 
 Here is a demonstration of the final version of the product that we are going to be making
