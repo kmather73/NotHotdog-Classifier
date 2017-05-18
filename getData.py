@@ -5,11 +5,7 @@ import os
 import numpy as np
 
 def store_raw_images(paths, links):
-    
-    
-
     pic_num = 1
-
     for link, path in zip(links, paths):
         if not os.path.exists(path):
             os.makedirs(path)
@@ -20,30 +16,12 @@ def store_raw_images(paths, links):
             try:                
                 urllib.request.urlretrieve(i, path+"/"+str(pic_num)+".jpg")
                 img = cv2.imread(path+"/"+str(pic_num)+".jpg")             
-            
                 if img is not None:
-                    #resized_image = cv2.resize(img, (100, 100))
                     cv2.imwrite(path+"/"+str(pic_num)+".jpg",img)
                     pic_num += 1
 
             except Exception as e:
                     print(str(e))  
-
-
-def createNegImages():
-    if not os.path.exists('neg'):
-        os.makedirs('neg')
-    
-    for img in os.listdir('orig'):
-        try:
-            currImgPath = str(img)
-            
-            newImg = cv2.imread('orig/'+currImgPath,cv2.IMREAD_GRAYSCALE)
-            resized_img = cv2.resize(newImg, (300, 300))
-            cv2.imwrite("neg/"+currImgPath, resized_img)
-
-        except Exception as e:
-            print(str(e))
     
 def removeInvalid(dirPaths):
     for dirPath in dirPaths:
@@ -59,16 +37,6 @@ def removeInvalid(dirPaths):
 
                 except Exception as e:
                     print(str(e))
-
-
-
-def createNegFile():
-    file_type = 'neg'
-    for img in os.listdir(file_type):            
-        line = file_type+'/'+img+'\n'
-        with open('bg.txt','a') as f:
-            f.write(line)
-          
   
 def main():
     links = [ 
@@ -83,27 +51,10 @@ def main():
     paths = ['pets', 'furniture', 'people', 'food', 'frankfurter', 'chili-dog', 'hotdog']
     
     
-    #store_raw_images(paths, links)
-    #createNegImages()
-    #removeInvalid(paths)
-    #createNegFile()
+    store_raw_images(paths, links)
+    removeInvalid(paths)
 
 
 if __name__ == "__main__":
 
     main()
-
-
-#Step 1:
-# opencv_createsamples -img arrow100_100.png -bg bg.txt -info info/info.txt -maxxangle 1 maxyangle 1 maxzangle 1 -num 5000
-#
-
-#Step 2
-# opencv_createsamples -info info/info.txt -num 5000 -w 100 -h 100 -vec positives.vec
-# 
-#Step 3
-# opencv_traincascade -data data -vec positives.vec -bg bg.txt -numPos 1800 -numNeg 900 -numStages 10 -w 40 -h 40
-
-
-#kevin@Lenovo-IdeaPad-Y410P ~/Documents/Git/robotics_a1/HarrTraining $ opencv_traincascade -data data -vec positives.vec -bg bg.txt -numPos 1800 -numNeg 900 -numStages 10 -w 40 -h 40
-
