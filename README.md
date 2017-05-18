@@ -166,14 +166,59 @@ def loadData(img_size, classSize):
 To normalize our images we convert them to gray scale and then preform [histogram equalization](https://en.wikipedia.org/wiki/Histogram_equalization) 
 
 # Step 4: Building our Neural Net
-Coming soon...
+My model is a convolutional neural networks with three convolutional layers followed by two fully connected layers. Its based on the CNN from the steering angle model for building self-driving cars built by [comma.ai](https://github.com/commaai/research/blob/master/train_steering_model.py). Because if its good enough to drive a car it's good enough to detect a hotdog. 
+
+
+The model includes ELU layers and dropout to introduce nonlinearity.
+| Layer         		|     Description	        					| 
+|:---------------------:|:---------------------------------------------:| 
+| Input         		| 128x128x1 Gray scale image  					| 
+| Convolution 8x8     	| 4x4 subsampling 								|
+| ELU			      	| 							 					|
+| 						|												|
+| Convolution 5x5	    | 2x2 subsampling								|
+| ELU					|												|
+| 						|												|
+| Convolution 5x5	    | 2x2 subsampling								|
+| Flatten 				| 												|
+| Dropout				| .2 dropout probability						|
+| ELU					|												|
+|						|												|
+| Fully connected		| output 512   									|
+| Dropout				| .5 dropout probability						|
+| ELU					|												|
+|						|												|
+| Fully connected		| output 2   									|
+| Softmax               | output 2                                      |
+
+To actually code this up we will use a library called Karas which is build on top of TensorFlow
+
+```
+def karasModel(inputShape):
+    model = Sequential()
+    model.add(Convolution2D(16, 8, 8, subsample=(4, 4),border_mode='valid', input_shape=inputShape))
+    model.add(ELU())
+    model.add(Convolution2D(32, 5, 5, subsample=(2, 2), border_mode="same"))
+    model.add(ELU())
+    model.add(Convolution2D(64, 5, 5, subsample=(2, 2), border_mode="same"))
+    model.add(Flatten())
+    model.add(Dropout(.2))
+    model.add(ELU())
+    model.add(Dense(512))
+    model.add(Dropout(.5))
+    model.add(ELU())
+    model.add(Dense(2))
+    model.add(Activation('softmax'))
+    return model
+```
 
 # Step 5: Training our Neural Net
 Coming soon...
 
 # Step 6: The Results
 Coming soon... with 98% accuracy
-# Step N: Profit
+
+# Step 7: Profit
 Now that we are done we can sell it to Periscope and become very rich
 [![IMAGE ALT TEXT](http://img.youtube.com/vi/AJsOA4Zl6Io/0.jpg)](https://youtu.be/AJsOA4Zl6Io)
 [CLICK ME](https://www.youtube.com/watch?v=AJsOA4Zl6Io)
