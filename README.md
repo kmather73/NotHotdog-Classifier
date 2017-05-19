@@ -214,10 +214,30 @@ def karasModel(inputShape):
 ```
 
 # Step 5: Training The Neural Net
-Coming soon...
+To Train the network we split our data into a tranining set and a test set
+```
+rand_state = np.random.randint(0, 100)
+X_train, X_test, y_train, y_test = train_test_split(scaled_X, y, test_size=0.2, random_state=rand_state)
+```
+Then is as simple to train 
+```
+inputShape = (128, 128, 1)
+model = karasModel(inputShape)
+model.compile('adam', 'categorical_crossentropy', ['accuracy'])
+history = model.fit(X_train, y_train, nb_epoch=10, validation_split=0.1)
+```
 
 # Step 6: The Results
-Coming soon... with 98% accuracy
+To test the model on the test set we just do
+```
+metrics = model.evaluate(X_test, y_test)
+for metric_i in range(len(model.metrics_names)):
+    metric_name = model.metrics_names[metric_i]
+    metric_value = metrics[metric_i]
+    print('{}: {}'.format(metric_name, metric_value))
+```
+
+We find that we get very good results with 98% accuracy.  This would make Jian-Yang proud.
 
 # Step 7: Profit
 Now that we are done we can sell it to Periscope and become very rich
