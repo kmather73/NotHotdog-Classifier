@@ -165,6 +165,31 @@ def loadData(img_size, classSize):
  ```   
 To normalize our images we convert them to gray scale and then preform [histogram equalization](https://en.wikipedia.org/wiki/Histogram_equalization) 
 
+```
+def toGray(images):
+    # rgb2gray converts RGB values to grayscale values by forming a weighted sum of the R, G, and B components:
+    # 0.2989 * R + 0.5870 * G + 0.1140 * B 
+    # source: https://www.mathworks.com/help/matlab/ref/rgb2gray.html
+    
+    images = 0.2989*images[:,:,:,0] + 0.5870*images[:,:,:,1] + 0.1140*images[:,:,:,2]
+    return images
+
+def normalizeImages(images):
+    # use Histogram equalization to get a better range
+    # source http://scikit-image.org/docs/dev/api/skimage.exposure.html#skimage.exposure.equalize_hist
+    images = (images / 255.).astype(np.float32)
+    
+    for i in range(images.shape[0]):
+        images[i] = exposure.equalize_hist(images[i])
+    
+    images = images.reshape(images.shape + (1,)) 
+    return images
+
+def preprocessData(images):
+    grayImages = toGray(images)
+    return normalizeImages(grayImages)
+```
+
 # Step 4: Building The Neural Net
 My model is a convolutional neural networks with three convolutional layers followed by two fully connected layers. Its based on the CNN from the steering angle model for building self-driving cars built by [comma.ai](https://github.com/commaai/research/blob/master/train_steering_model.py). Because if its good enough to drive a car it's good enough to detect a hotdog. 
 
