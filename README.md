@@ -28,12 +28,12 @@ The very first step in making a classifier is to collect data. Thus we need to f
 [CLICK ME](https://www.youtube.com/watch?v=T0FA_69nXjM)
 
 
-So if you're not a professor at Stanford you will need to collect the data yourself :(   Since I'm not a processor at Stanford I had to collect the images myself. To do this I just used [ImageNet](http://www.image-net.org/) to search for my images, since ImageNet is like a database of images. To find the hotdog images I just searched for “hotdog”, “chili dog” and “frankfurter” after downloading all of the images it would me about 1857 hotdog images.  For the not-hotdog images I searched for “food”, “furniture”, “people” and “pets” this give me about 4024 not-hotdog images.
+So if you're not a professor at Stanford you will need to collect the data yourself :(   Since I'm not a professor at Stanford I had to collect the images myself. To do this I just used [ImageNet](http://www.image-net.org/) to search for my images, since ImageNet is like a database of images. To find the hotdog images I just searched for “hotdog”, “chili dog” and “frankfurter” after downloading all of the images it would me about 1857 hotdog images.  For the not-hotdog images I searched for “food”, “furniture”, “people” and “pets” this give me about 4024 not-hotdog images.
 
 Now to actually download these images I need to get the URLs, to do that I just need to click on the tab download tab click on link called URLs
 ![ImageNet1]
 
-then copy the URL of the page your on which will use in a script that well wirte to download all of thses images.
+then copy the URL of the page your on which will use in a script that we'll write to download all of these images.
 ![ImageNet2]
 
 Next we need to write our scripts to download and save all of these images, here is my [python code](https://github.com/kmather73/NotHotdog-Classifier/blob/master/getData.py) for saving the images 
@@ -91,7 +91,7 @@ At this point we have collected our data now we just need to clean it up a bit. 
 ![ToRemove2]
 ![ToRemove3]
 
-To do this let write some more scripts to do this work for use, first we just need to get a copy of the images that we want to remove and place them in a folder called ‘invalid’.
+To do this let write some more scripts to do this work for us, first we just need to get a copy of the images that we want to remove and place them in a folder called ‘invalid’.
 
 ```
 def removeInvalid(dirPaths):
@@ -192,7 +192,7 @@ The model includes ELU layers and dropout to introduce nonlinearity:
 | Fully connected		| output 2   									|
 | Softmax               | output 2                                      |
 
-To actually code this up we will use a library called Karas which is build on top of TensorFlow
+To actually code this up we will use a library called Karas which is built on top of TensorFlow
 
 ```
 def karasModel(inputShape):
@@ -214,7 +214,7 @@ def karasModel(inputShape):
 ```
 
 # Step 5: Training The Neural Net
-To Train the network we split our data into a tranining set and a test set
+To train the network we split our data into a tranining set and a test set
 ```
 rand_state = np.random.randint(0, 100)
 X_train, X_test, y_train, y_test = train_test_split(scaled_X, y, test_size=0.2, random_state=rand_state)
