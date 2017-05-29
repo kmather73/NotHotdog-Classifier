@@ -217,10 +217,10 @@ The model includes ELU layers and dropout to introduce nonlinearity:
 | Fully connected		| output 2   									|
 | Softmax               | output 2                                      |
 
-To actually code this up we will use a library called Karas which is built on top of TensorFlow
+To actually code this up we will use a library called Keras which is built on top of TensorFlow
 
 ```
-def karasModel(inputShape):
+def kerasModel(inputShape):
     model = Sequential()
     model.add(Convolution2D(16, 8, 8, subsample=(4, 4),border_mode='valid', input_shape=inputShape))
     model.add(ELU())
@@ -247,7 +247,7 @@ X_train, X_test, y_train, y_test = train_test_split(scaled_X, y, test_size=0.2, 
 Then is as simple to train 
 ```
 inputShape = (128, 128, 1)
-model = karasModel(inputShape)
+model = kerasModel(inputShape)
 model.compile('adam', 'categorical_crossentropy', ['accuracy'])
 history = model.fit(X_train, y_train, nb_epoch=10, validation_split=0.1)
 ```
