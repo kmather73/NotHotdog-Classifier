@@ -128,7 +128,7 @@ def normalizeImages2(images):
     return images
 
 
-def karasModel(inputShape):
+def kerasModel(inputShape):
     model = Sequential()
     model.add(Convolution2D(8, 5, 5, border_mode='valid', input_shape=inputShape))
     #model.add(MaxPooling2D((2, 2)))
@@ -177,7 +177,7 @@ X_train, X_test, y_train, y_test = train_test_split(scaled_X, y, test_size=0.2, 
 print("train shape X", X_train.shape)
 print("train shape y", y_train.shape)
 inputShape = (size, size, 1)
-model = karasModel(inputShape)
+model = kerasModel(inputShape)
 
 #y_one_hot = label_binarizer.fit_transform(y_train)
 #y_one_hoy = tf.one_hot(y_train, 2)
