@@ -10,7 +10,7 @@
 
 
 # NotHotdog-Classifier
-Do you watch HBO's silicon valley? Because I do and I was inspired by Mr. Jian-Yang to make my own not hotdog classifier
+Do you watch HBO's Silicon Valley? Because I do and I was inspired by Mr. Jian-Yang to make my own not hotdog classifier
 
 "What would you say if I told you there is a app on the market that tell you if you have a hotdog or not a hotdog. It is very good and I do not want to work on it any more. You can hire someone else." - Jian-Yang , 2017
 
@@ -36,8 +36,8 @@ Now to actually download these images I need to get the URLs, to do that I just 
 then copy the URL of the page your on which will use in a script that we'll write to download all of these images.
 ![ImageNet2]
 
-Next we need to write our scripts to download and save all of these images, here is my [python code](https://github.com/kmather73/NotHotdog-Classifier/blob/master/getData.py) for saving the images 
-Here the function store_raw_images takes in a list of folders names where you want to save the images to from each of the links.
+Next we need to write our scripts to download and save all of these images, here is my [python code](https://github.com/kmather73/NotHotdog-Classifier/blob/master/getData.py) for saving the images. 
+The function store_raw_images takes in a list of folders names where you want to save the images to from each of the links.
 ```
 def store_raw_images(folders, links):
     pic_num = 1
@@ -82,7 +82,7 @@ def main():
     store_raw_images(paths, links)
 ```
 
-Now just wait for it to download all of thoses hotdogs!!!
+Now just wait for it to download all of those hotdogs!!!
 
 # Step 2: Cleaning the data
 At this point we have collected our data now we just need to clean it up a bit. If you take a look at the data you will probably notice that there are some garbage images that we need to remove, images that look like one of the following
@@ -114,7 +114,7 @@ Then just check the folder 'food' to and remove any images that might look like 
 # Step 3: Preprocessing and Data Augmentation
 Before we can feed our data to train our neural net we first need to do some data normalization and some data augmentation. It turns out that we don't have an equal number of hotdog and not hotdog images which is a problem when training a classifier. To fix this problem we can do some data augment by sampling images from each of the class and applying a random rotation and blur to the image to get more data.
 
-This method can be used to greatly increase the amount of data we have since neural nets need a “large” amount of data to get good results. I used this method to get 15000 images from each class
+This method can be used to greatly increase the amount of data we have since neural nets need a “large” amount of data to get good results. I used this method to get 15000 images from each class:
 ```
 def rotateImage(img, angle):
     (rows, cols, ch) = img.shape
@@ -163,7 +163,7 @@ def loadData(img_size, classSize):
     
     return X, y
  ```   
-To normalize our images we convert them to gray scale and then preform [histogram equalization](https://en.wikipedia.org/wiki/Histogram_equalization) 
+To normalize our images we convert them to gray scale and then preform [histogram equalization](https://en.wikipedia.org/wiki/Histogram_equalization)
 
 ```
 def toGray(images):
@@ -244,7 +244,7 @@ To train the network we split our data into a tranining set and a test set
 rand_state = np.random.randint(0, 100)
 X_train, X_test, y_train, y_test = train_test_split(scaled_X, y, test_size=0.2, random_state=rand_state)
 ```
-Then is as simple to train 
+Then is as simple to train
 ```
 inputShape = (128, 128, 1)
 model = kerasModel(inputShape)
