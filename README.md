@@ -109,7 +109,7 @@ def removeInvalid(dirPaths):
                 except Exception as e:
                     print(str(e))
 ```
-Then just check the folder 'food' to and remove any images that might look like a hotdog. Next I made two folders called "hotdog" and "not-hotdog" and placed the 'frankfurter', 'chili-dog', 'hotdog' folders in the "not-hotdog" and the 'frankfurter', 'chili-dog', 'hotdog' folders in the 'hotdog' folder.
+Then just check the folder 'food' to and remove any images that might look like a hotdog. Next I made two folders called "hotdog" and "not-hotdog" and placed the 'food', 'furniture', 'pets', 'people' folders in the "not-hotdog" and the 'frankfurter', 'chili-dog', 'hotdog' folders in the 'hotdog' folder.
 
 # Step 3: Preprocessing and Data Augmentation
 Before we can feed our data to train our neural net we first need to do some data normalization and some data augmentation. It turns out that we don't have an equal number of hotdog and not hotdog images which is a problem when training a classifier. To fix this problem we can do some data augment by sampling images from each of the class and applying a random rotation and blur to the image to get more data.
